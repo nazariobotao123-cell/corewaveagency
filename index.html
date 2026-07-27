@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corewave Agency - Marketing Digital, Publicidade e Websites em Nampula. Estratégia, Design e Tecnologia para o seu negócio.">
+    <title>Corewave Agency | Marketing & Technology Nampula</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animações -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #001f3f; /* Azul Marinho Executivo */
+            --secondary: #00e5ff; /* Ciano Corewave */
+            --dark: #0a0a0a;
+            --light: #ffffff;
+            --gray: #f4f7f6;
+            --accent-gradient: linear-gradient(135deg, #001f3f 0%, #00e5ff 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; }
+
+        /* --- CABEÇALHO (HEADER) --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 14px; }
+        /* Espaço para o Logotipo */
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .logo-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .logo-text h1 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--primary); font-weight: 800; line-height: 1; }
+        .logo-text span { font-size: 0.75rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; }
+
+        nav ul { display: flex; list-style: none; gap: 8px; }
+        .nav-link {
+            padding: 10px 18px;
+            border: none;
+            background: transparent;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        .nav-link:hover { background: var(--gray); color: var(--secondary); }
+        .nav-link.active { background: var(--primary); color: white; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.85)), 
+                        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+        .hero-content h2 { font-family: 'Montserrat', sans-serif; font-size: 4rem; margin-bottom: 20px; font-weight: 800; }
+        .hero-content p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
+        .cta-btn { 
+            padding: 15px 40px; 
+            background: var(--secondary); 
+            color: var(--primary); 
+            border: none; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.4); }
+
+        /* --- SEÇÕES GERAIS --- */
+        section { padding: 100px 10%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .underline { width: 60px; height: 5px; background: var(--secondary); margin: 0 auto; border-radius: 2px; }
+
+        /* --- SERVIÇOS CARDS --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .s-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .s-card:hover { transform: translateY(-10px); background: var(--primary); color: white; }
+        .s-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+
+        /* --- PORTFOLIO CAROUSEL --- */
+        .portfolio-track { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 30px; scrollbar-width: none; }
+        .portfolio-item { min-width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+        .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; }
+
+        /* --- EQUIPE --- */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .team-member { text-align: center; }
+        .member-img { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 15px; background: #ddd; border: 4px solid var(--secondary); object-fit: cover; }
+
+        /* --- CONTACTOS --- */
+        .contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--gray); padding: 50px; border-radius: 20px; }
+        .map-container { border-radius: 15px; overflow: hidden; height: 300px; margin-top: 20px; }
+        
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--primary); color: white; padding: 60px 10% 20px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; opacity: 0.7; }
+
+        /* Botão WhatsApp Fixo */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 900px) {
+            header { flex-direction: column; padding: 20px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero-content h2 { font-size: 2.5rem; }
+            .contact-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com Logotipo -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-img">
+                <img src="assets/imagens/logo.png" alt="Corewave Logo">
+            </div>
+            <div class="logo-text">
+                <h1>COREWAVE</h1>
+                <span>Agency & Technology</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><button class="nav-link active" onclick="scrollSection('home')">Início</button></li>
+                <li><button class="nav-link" onclick="scrollSection('sobre')">Sobre</button></li>
+                <li><button class="nav-link" onclick="scrollSection('servicos')">Serviços</button></li>
+                <li><button class="nav-link" onclick="scrollSection('portfolio')">Projetos</button></li>
+                <li><button class="nav-link" onclick="scrollSection('equipe')">Equipa</button></li>
+                <li><button class="nav-link" onclick="scrollSection('contactos')">Contacto</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h2>Impulsionamos Marcas na Era Digital</h2>
+            <p>Estratégia, Design de Identidade Visual e Tecnologia de Alta Performance para empresas que buscam o topo do mercado.</p>
+            <button class="cta-btn" onclick="scrollSection('contactos')">Solicitar Orçamento 2026</button>
+        </div>
+    </section>
+
+    <!-- Quem Somos -->
+    <section id="sobre">
+        <div class="section-header">
+            <h2>Quem Somos</h2>
+            <div class="underline"></div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+                <h3 style="color: var(--primary); margin-bottom: 20px;">Uma Equipa Jovem e Multidisciplinar</h3>
+                <p style="margin-bottom: 15px; color: #555;">Sediada em <strong>Nampula</strong>, a Corewave Agency é composta por especialistas em estratégia digital, designers criativos e programadores focados em resultados reais.</p>
+                <p style="color: #555;">Nossa missão é colocar a sua marca no centro do crescimento através de soluções inovadoras e branding de alto impacto.</p>
+            </div>
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Corewave Team" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" style="background-color: var(--gray);">
+        <div class="section-header">
+            <h2>Nossos Serviços</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="services-grid">
+            <div class="s-card" data-aos="zoom-in">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Gestão Profissional de Redes Sociais</h3>
+                <p>Meta Ads, TikTok e engajamento orgânico.</p>
+            </div>
+            <div class="s-card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-pen-nib"></i>
+                <h3>Identidade Visual & Branding</h3>
+                <p>Logótipos, manuais de marca e design promocional.</p>
+            </div>
+            <div class="s-card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Criação de Websites</h3>
+                <p>Sites institucionais, e-commerce e landing pages responsivas.</p>
+            </div>
+            <div class="s-card" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-chart-line"></i>
+                <h3>Consultoria Estratégica</h3>
+                <p>Análise de mercado e posicionamento competitivo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section id="equipe">
+        <div class="section-header">
+            <h2>A Nossa Equipa</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="team-grid">
+            <div class="team-member" data-aos="fade-up">
+               <img src="assets/imagens/CEO.jpg" class="member-img">
+                <h4>Kevin Jesus</h4>
+                <p>CEO & Estratégia Digital</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/imagens/Programer.jpg" class="member-img">
+                <h4>Nazario Salvador</h4>
+                <p>Programador e copywriter</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/imagens/Fotografo.jpg" class="member-img">
+                <h4>Acacio Golçalves</h4>
+                <p>Fotografo e paisagista</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/imagens/Programer2.jpg" class="member-img">
+                <h4>Celestino</h4>
+                <p>Programador e Gestor financeiro</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/imagens/Design.jpg" class="member-img">
+                <h4>Nursanilto</h4>
+                <p>Design</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/imagens/vdpago.jpg" class="member-img">
+                <h4>Shelton Perreira</h4>
+                <p>Video editor e Gestor de trafego pago (Ads)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contactos -->
+    <section id="contactos">
+        <div class="section-header">
+            <h2>Vamos Conversar?</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-box" data-aos="fade-up">
+            <div>
+                <h3>Informações de Contacto</h3>
+                <p style="margin: 20px 0;"><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> Nampula, Moçambique</p>
+                <p style="margin: 20px 0;"><i class="fas fa-envelope" style="color: var(--secondary);"></i> info@corewave.agency</p>
+                <p style="margin: 20px 0;"><i class="fas fa-phone" style="color: var(--secondary);"></i> +258 83 411 1509</p>
+                
+                <div class="map-container">
+                    <!-- Mapa focado em Nampula -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62432.123565431!2d39.2483!3d-15.1167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1f2b6040f7d5403b%3A0xc66465457f5c222e!2sNampula!5e0!3m2!1spt-PT!2smz!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <form id="formLead">
+                <h3>Envie uma Mensagem</h3>
+                <br>
+                <input type="text" placeholder="Nome Completo" required>
+                <input type="email" placeholder="E-mail Corporativo" required>
+                <input type="text" placeholder="Assunto">
+                <textarea rows="5" placeholder="Como podemos ajudar o seu negócio?" required></textarea>
+                <button type="submit" class="cta-btn" style="width: 100%;">Enviar Proposta</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>COREWAVE</h4>
+                <p>Sua parceira estratégica em marketing e tecnologia no norte de Moçambique.</p>
+            </div>
+            <div>
+                <h4>Links Rápidos</h4>
+                <p><a href="#sobre" style="color: white; text-decoration: none;">Sobre Nós</a></p>
+                <p><a href="#servicos" style="color: white; text-decoration: none;">Serviços</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">Blog</a></p>
+            </div>
+            <div>
+                <h4>Siga-nos</h4>
+                <div style="display: flex; gap: 15px; font-size: 1.5rem; margin-top: 10px;">
+                    <i class="fab fa-instagram" style="cursor: pointer;"></i>
+                    <i class="fab fa-linkedin" style="cursor: pointer;"></i>
+                    <i class="fab fa-facebook" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Corewave Agency - Todos os direitos reservados. Sediada em Nampula.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/258834111509" class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function scrollSection(id) {
+            const section = document.getElementById(id);
+            const offset = 80;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = section.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Update Active Class
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        document.getElementById('formLead').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! A equipa da Corewave Agency entrará em contacto em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
